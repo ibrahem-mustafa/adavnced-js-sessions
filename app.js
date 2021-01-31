@@ -1,3 +1,6 @@
+// var Username;
+
+
 // console.log('Hello World')
 
 // Var
@@ -13,13 +16,158 @@
 // function arguments
 // this keyword
 // Every Thing Is An Object 2
+
+// HOISTING
+
 // fetch from api
 
+
+// fetch('https:www.google.com')
+
+// API
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////// PART TWO /////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+// ///////////////////////////// API & Fetch /////////////////////////// //
+
+// fetch url => request => res => fetchCallback(res)
+
+const state = {}
+
+fetch('http://jsonplaceholder.typicode.com/todos/')
+.then(function (res) {
+  console.log(res)
+  return res.json()
+})
+.then(function (data) {
+  state.todos = data;
+
+  afterInit(state);
+})
+
+function afterInit(state) {
+
+  
+  console.log(state)
+
+
+
+}
+
+
+
+// ///////////////////////////// END API & Fetch /////////////////////////// //
+
+
+// ///////////////////////////// THIS KEYWORD AND EVERY THING IS AN OBJECT 2 /////////////////////////// //
+
+// normal function
+// function funWithoutThis() {
+//   var username = 'new username'
+
+//   function newFunc() {
+//     username = 'new new username'
+//   }
+
+//   newFunc();
+
+
+//   return username;
+// }
+
+
+// function with this keyword
+// function = {
+//   username: 'ahmed'
+//    call
+// }
+
+// var funObj = {
+//   username: 'ahmed',
+//   call: function() {
+//   console.log(this.username)
+
+//   }
+// }
+
+
+// function funWithThis() {
+
+//   function nestedFunction() {
+//     this.value = 10;
+//     this.username = 'ahmed';
+//     console.log(this.username)
+//   }
+//   nestedFunction()
+  
+//   return this;
+// }
+
+
+// console.log(funWithThis().value)
+
+
+// ///////////////////////////// END THIS KEYWORD AND EVERY THING IS AN OBJECT 2/////////////////////////// //
+
+
+
+// ///////////////////////////// FUNCTION Parameters /////////////////////////// //
+
+// string
+// number
+// boolean
+// null
+// function
+// object
+// array
+
+// function multiBySelf(x) {
+//   console.log(x * x);
+  
+// }
+
+// multiBySelf()
+
+// function sayHi(name = 'system', cb) {
+//  const msg = ' Say\'s Hi';
+//  const finalMsg = name + msg;
+//  cb(finalMsg)
+// }
+
+// var username;
+// var haveUser = false;
+
+// if (haveUser) {
+//   username = 'ahmed'
+// }
+
+
+// sayHi(username, function (msg) {
+//   console.log(msg)
+// })
+
+// function funWithArg(arg1, arg2) {
+//   console.log(arg1, arg2)
+// }
+
+// funWithArg(1, 2)
+
+// ///////////////////////////// END FUNCTION ARGUMENTS /////////////////////////// //
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////// PART ONE /////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 // ///////////////////////////// SELF INVOKING (function) /////////////////////////// //
-var views = 0;
+// var views = 0;
 
 
 // function selfInvoke() {
@@ -29,32 +177,35 @@ var views = 0;
 // selfInvoke();
 
 
-(function () {
-  views++
-})()
+// (function () {
+//   views++
+//   // request to server => user {ahmed} watched {post 1} 
+//   // post 1 => views++
+// })()
 
-console.log(views)  
+// console.log(views)  
 
-// ///////////////////////////// END SELF INVOKING /////////////////////////// //
+// // ///////////////////////////// END SELF INVOKING /////////////////////////// //
 
 
 
-// ///////////////////////////// R FUNCTION /////////////////////////// //
+// // ///////////////////////////// R FUNCTION /////////////////////////// //
 // function count(x) {
   
-//   // if (x < 100) {
-//   //   console.log(++x)
-//   //   count(x);
-//   // }
+//   if (x < 100) {
+//     console.log(++x)
+//     count(x);
+//   }
 //   // try to connect ======> request =====> true || truConnect(5) 
 // }
+
+// count(4);
 
 // while(x < 100) {
 //   console.log(++x)
 //     // count();
 // }
 
-// count(0);
 
 // ///////////////////////////// END R FUNCTION /////////////////////////// //
 
@@ -287,7 +438,23 @@ console.log(views)
 
 // console.log(name);
 
-// var name = 'ahmed'
+// var username;
+
+// console.log(Username)
+
+// var Username = 'ahmed'
+
+// console.log(Username)
+
+// var Username = 'mohammed'
+// console.log(Username)
+
+
+// console.log(user_name)
+// const user_name = 'mohammed'
+
+
+
 
 // console.log(name)
 
