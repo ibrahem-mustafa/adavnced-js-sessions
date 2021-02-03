@@ -1,24 +1,4 @@
 
-/////////////////////////// STRING ////////////////////////
-// includes => 4
-// trim => 3
-// replace => 2
-// substr => 2
-// repeat => 2
-///////////////////////////////////////////////////////////
-
-/////////////////////////// ARRAY ////////////////////////
-
-// fill => all
-// includes => 6
-// every => 6
-// reduce => 6
-// map => 4
-// concat => 2
-// splice vs slice
-// new Array(10)
-
-///////////////////////////////////////////////////////////
 
 // let
 // const
@@ -42,42 +22,42 @@
 /////////////////////////// FIND & FIND INDEX /////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 
-const users = [
-  {
-    id: 1,
-    name: 'ahmed', 
-    age: 15
-  },
-  {
-    id: 2,
-    name: 'mohammed', 
-    age: 25
-  },
-  {
-    id: 3,
-    name: 'ziad', 
-    age: 26
-  },
-  {
-    id: 4,
-    name: 'magdy', 
-    age: 30
-  },
+// const users = [
+//   {
+//     id: 1,
+//     name: 'ahmed', 
+//     age: 15
+//   },
+//   {
+//     id: 2,
+//     name: 'mohammed', 
+//     age: 25
+//   },
+//   {
+//     id: 3,
+//     name: 'ziad', 
+//     age: 26
+//   },
+//   {
+//     id: 4,
+//     name: 'magdy', 
+//     age: 30
+//   },
   
-]
+// ]
 
 
-const user = users.find(function (user) {
-  return user.id === 3
-})
+// const user = users.find(function (user) {
+//   return user.id === 3
+// })
 
-console.log(user)
+// console.log(user)
 
-const userIndex = users.findIndex(function (user) {
-  return user.id === 3
-})
+// const userIndex = users.findIndex(function (user) {
+//   return user.id === 3
+// })
 
-console.log(userIndex)
+// console.log(userIndex)
 
 
 ///////////////////////////////////////////////////////////////////////////
@@ -117,6 +97,27 @@ console.log(userIndex)
 //   id: Symbol('1'),
 //   name: 'ibrahem'
 // }
+
+// currentUser = {id, name, role}
+
+// post => send => currentUser ? send(currentUser.id) : false
+
+
+// const usersArray = [
+//   {
+//     id: Symbol('1'),
+//     name: 'ahmed'
+//   },
+//   {
+//     id: Symbol('1'),
+//     name: 'ibrahem'
+//   }
+// ]
+
+// const userIds = usersArray.map(user => user.id)
+
+// console.log(userIds);
+
 
 // const idArr = [ user2.id, user1.id]
 
@@ -198,6 +199,8 @@ console.log(userIndex)
  * })
  *  */  
 
+
+
 //  const isOk = new Promise(function (resolve, reject) {
 //    const loadingSuccess = false;
 //    setTimeout(function () {
@@ -239,7 +242,10 @@ console.log(userIndex)
 
 // function fetchClone(url) {
 //   return new Promise((resolve, reject) => {
-//     const loaded = false;
+
+
+    
+//     const loaded = true;
 //     let data;
 //     // get data from url;
 //     setTimeout(() => {
@@ -475,6 +481,11 @@ console.log(userIndex)
 // }
 
 // arrowFunction('Hello From Arrow Function', 'mario');
+
+ 
+
+// const normalFunction = argument1 =>  console.log(argument1);
+
 
 
 ///////////////////////////////////////////////////////////////////////////
