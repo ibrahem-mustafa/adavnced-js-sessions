@@ -1,29 +1,32 @@
-// NAVIGATION THROUGH TERMINAL
-// [cd] MAIN KEYWORD
-// [./] MOVE FORWARD
-// [./folderName] MOVE TO FOLDER NAME
-// [../] MOVE BACKWARD 1 STEP
-// [../../] MOVE BACKWARD 2 STEP
-// [ls] KEYWORD TO GET THE CURRENT FOLDER FILES & NESTED FOLDERS
+// RES => JSON (STRING)
+// JSON.stringify(data) => JSON (OBJECT) => STRING
+// REQ => JSON (OBJECT)
+// JSON.parse(data |JSON AS STRING| ) => STRING => JSON (OBJECT)
 
-// const http = require('http');
-// const url = require('url');
-// const fs = require('fs');
-const {
-  Log,
-  LogError,
-  LogWarn
-} = require('./myModule.js')
+const http = require('http');
+const fs = require('fs');
 
-Log('This Is Logger')
-LogError('This Is LogError')
-LogWarn('This Is LogWarn');
-// const app = http.createServer((req, res) => {
-//   const query = url.parse(req.url, true).query;
-//   const file = fs.readFileSync('index.html')
-//   res.setHeader('Content-Type', 'text/html')
-//   res.end(file);
-// })
+// REQUEST => Send Data To Server || Send A Request To Get Data
+// RESPONSE => Receive Data From Server (Send Data From Server To Client)
 
-// app.on('listening', () => console.log('Listening On Post 8080'))
-// app.listen(8080)
+// application/json
+// text/html
+
+const app = http.createServer((req, res) => {
+  const data = {
+    name: 'ahmed',
+    id:1,
+    age: 30
+  }
+
+  
+  res.setHeader('Content-Type', 'text/html')
+  const index = fs.readFileSync('index.html')
+  res.write(index)
+  res.end()
+})
+
+
+app.on('listening', () => console.log('Server Started On Port 8080'))
+
+app.listen(8080)
