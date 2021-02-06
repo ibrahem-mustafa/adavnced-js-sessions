@@ -7,7 +7,7 @@ const http = require('http');
 const fs = require('fs');
 
 // REQUEST => Send Data To Server || Send A Request To Get Data
-// RESPONSE => Receive Data From Server (Send Data From Server To Client)
+// res => Receive Data From Server (Send Data From Server To Client)
 
 // application/json
 // text/html
@@ -19,14 +19,19 @@ const app = http.createServer((req, res) => {
     age: 30
   }
 
-  
-  res.setHeader('Content-Type', 'text/html')
-  const index = fs.readFileSync('index.html')
-  res.write(index)
-  res.end()
+  if(req.url === '/' || req.url === '/index.html') {
+    fs.readFile("index.html", (error, html) => {
+      res.end(html);
+    });
+  } else if(req.url === '/play.js') {
+    fs.readFile("play.js", (error, js) => {
+      res.end(js);
+    });
+  }
+ 
 })
 
 
-app.on('listening', () => console.log('Server Started On Port 8080'))
+app.on('listening', () => console.log('Server Started On Port 8020'))
 
-app.listen(8080)
+app.listen(8020)
