@@ -1,0 +1,27 @@
+
+1: Article System
+=> getArticles | GET
+=> getArticle | GET | articleId
+=> insert | POST | title & content
+=> update | PUT | title & content & articleId
+=> delete | DELETE | articleId
+
+2: DB {MongoDB & Mongoose}
+=> create Database
+=> Connect To DB
+=> get
+=> insert
+=> update
+=> delete
+
+3: Authorizations System // login / signup
+=> login | POST | email & password
+=> singup | POST | email & password & name & category
+
+4: Apply Article System With DB + Authorizations System
+=> Get Article => Get From DB
+=> Insert Article => Insert In DB
+=> Update Article => Update In DB
+=> Delete Article => Delete In DB
+
+5: How To Deploy Api

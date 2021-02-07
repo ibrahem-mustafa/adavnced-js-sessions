@@ -1,0 +1,10 @@
+# Init package.json
+=> npm init
+# Init package as Dev
+=> npm i -D "packageName"
+# Install Express
+=> npm i express
+# Install Express Generator
+=> npm i -g express-generator
+# Generate Express Project
+=> express "projectName"
