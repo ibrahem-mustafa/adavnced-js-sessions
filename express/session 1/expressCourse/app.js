@@ -4,6 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const {connectToDB} = require('./config/db')
+connectToDB();
+
 // var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth')
@@ -32,7 +35,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/auth', authRouter)
-
 app.use('/articles', articleRouter)
 
 // app.user('/article', articleRouter)

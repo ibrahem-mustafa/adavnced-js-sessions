@@ -3,22 +3,18 @@ const express = require('express');
 const router = express.Router();
 
 
+const { Article } = require('../models/article.model')
 
-const singleArticle = {
-  id: '',
-  title: '',
-  content:  ''
-}
 
-const articles = [];
+router.get('/', async (req, res) => {
 
-router.get('/', (req, res) => {
+  const articles = await Article.find()
   res.json({
     articles
   })
 })
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   const {id} = req.params;
   // search in articles array about one article that matches the given id
   // send json response with that article if founded
@@ -26,31 +22,57 @@ router.get('/:id', (req, res) => {
 
   const response = {};
 
-  const article = articles.find(art => art.id == id);
+  try { 
+    const article = await Article.findById(id)
+    if (!article) {
+      response.msg = 'Article Not Found.'
+    } else {
+      response.article = article
+    }
+  } catch(err) {
+    response.msg = 'Invalid Id'
+  }
+
+  res.json(response)
+})
+
+router.get('/title/:title', async(req, res) => {
+  const {title} = req.params
+
+  const response = {};
+
+  const article = await Article.findOne({title}) // [] documents
   if (!article) {
     response.msg = 'Article Not Found.'
-  }else {
+  } else {
     response.article = article
   }
 
   res.json(response)
 })
 
-router.post('/insert', (req, res) => {
+router.post('/insert', async (req, res) => {
   const {title, content} = req.body;
 
-  articles.push({
-    id: articles.length,
+  const article = Article({
     title, content
   })
+
+  await article.save();
+
+  // articles.push({
+  //   id: articles.length,
+  //   title, content
+  // })
+
   res.json({
     result: 'Article Inserter Successfully',
-    articles
+    article
   })
 })
 
 
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
   // search in articles array about one article that matches the given id
   // If Article Founded, Update Article Title And Content
   // if article not found send msg about that 
@@ -60,45 +82,56 @@ router.put('/:id', (req, res) => {
 
   const response = {};
 
-  let  article = articles.find(art => art.id == id);
+  // let  article = articles.find(art => art.id == id);
+  let article = await Article.findById(id)
 
   if (!article) {
-    article = {
-      title, content, id: articles.length
-    };
-    articles.push(article);article
+
+    article = Article({
+      title, content
+    });
+    // articles.push(article);article
     response.msg = 'Article Not Found, New Article Created With Given Data';
+
   } else {
+
     article.title = title;
     article.content = content;
+
     response.msg = 'Article Update Successfully';
   }
+  
+  await article.save()
 
   response.article = article
   
   res.json(response)
 })
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   // search in articles array about one article that matches the given id
   // If Article Founded, Remove Article From Articles Array & Return Remaining Articles
   // if article not found send msg about that 
   const {id} = req.params
 
   const response = {};
-  const articleIndex = articles.findIndex(art => art.id == id);
 
-  if (articleIndex > -1) {
-    articles.splice(articleIndex, 1);
-    response.msg = 'Article Deleted Successfully';
-  } else {
-    response.msg = 'Article Not Found';
-  }
+  await Article.findByIdAndDelete(id)
+  const articles = await Article.find()
+  // const articleIndex = articles.findIndex(art => art.id == id);
+
+  // if (articleIndex > -1) {
+  //   articles.splice(articleIndex, 1);
+  //   response.msg = 'Article Deleted Successfully';
+  // } else {
+  //   response.msg = 'Article Not Found';
+  // }
 
   response.articles = articles;
 
   res.json(response)
 })
+
 
 
 module.exports = router;

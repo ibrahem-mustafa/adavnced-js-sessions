@@ -1,0 +1,70 @@
+******************************************************
+
+1: Mongo DB Is A NoSQL Database (Not Relational)
+2: Mongo DB Is A Group Of Collection
+
+******************************************************
+
+// Atomic Operations
+1: $set
+
+******************************************************
+// Show Exists Databases
+=> show dbs
+
+// Create Or Use A Database
+=> use "DatabaseName"
+
+// Create Collection
+=> db.createCollection('collectionName')
+
+// Show exists Collections
+=> show collections
+
+// Insert Data To Collection
+=> db."collectionName".insert({
+  ...
+})
+
+// Insert Many Data To Collection
+=> db."collectionName".insertMany( [{}] )
+
+// Show Array Data In Collection | Return Array Of Document
+=> db."collectionName".find({ [query] })
+
+// Find One Document
+=> db."collectionName".findOne({ [query] })
+
+// Update Single Document In Collection
+=> db."collectionName".updateOne({ [query] }, { [data] })
+
+// Update Multi Document In Collection
+=> db."collectionName".updateMany({ [query] }, { [data] })
+
+// Delete Single Document In Collection
+=> db."collectionName".deleteOne({ [query] })
+
+// Delete Multi Document In Collection
+=> db."collectionName".deleteMany({ [query] })
+
+
+
+// Pretty Result
+=> \Condition\.pretty()
+
+
+
+//////////////////////////////////////////////////
+
+// Article Collection
+const articleSchema = {
+  title: {
+    type: String,
+    required: true
+  },
+  content: {
+    type: String,
+    default: "Bla bla bla"
+  }
+}
+
