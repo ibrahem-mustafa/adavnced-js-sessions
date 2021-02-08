@@ -19,12 +19,21 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
+  const {id} = req.params;
   // search in articles array about one article that matches the given id
   // send json response with that article if founded
   // if article not found send msg about that 
-  res.json({
-    article: 'single Article'
-  })
+
+  const response = {};
+
+  const article = articles.find(art => art.id == id);
+  if (!article) {
+    response.msg = 'Article Not Found.'
+  }else {
+    response.article = article
+  }
+
+  res.json(response)
 })
 
 router.post('/insert', (req, res) => {
@@ -48,10 +57,26 @@ router.put('/:id', (req, res) => {
 
   const {id} = req.params
   const {title, content} = req.body;
-  res.json({
-    result: 'Update Article',
-    id,title, content
-  })
+
+  const response = {};
+
+  let  article = articles.find(art => art.id == id);
+
+  if (!article) {
+    article = {
+      title, content, id: articles.length
+    };
+    articles.push(article);article
+    response.msg = 'Article Not Found, New Article Created With Given Data';
+  } else {
+    article.title = title;
+    article.content = content;
+    response.msg = 'Article Update Successfully';
+  }
+
+  response.article = article
+  
+  res.json(response)
 })
 
 router.delete('/:id', (req, res) => {
@@ -59,10 +84,20 @@ router.delete('/:id', (req, res) => {
   // If Article Founded, Remove Article From Articles Array & Return Remaining Articles
   // if article not found send msg about that 
   const {id} = req.params
-  res.json({
-    result: 'Delete Article',
-    id
-  })
+
+  const response = {};
+  const articleIndex = articles.findIndex(art => art.id == id);
+
+  if (articleIndex > -1) {
+    articles.splice(articleIndex, 1);
+    response.msg = 'Article Deleted Successfully';
+  } else {
+    response.msg = 'Article Not Found';
+  }
+
+  response.articles = articles;
+
+  res.json(response)
 })
 
 
