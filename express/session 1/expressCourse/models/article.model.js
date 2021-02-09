@@ -10,6 +10,10 @@ const articleSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  publisher: {
+    id: {type: String, required: true},
+    name: {type: String, required: true}
+  },
   show: {
     type: Boolean,
     default: true

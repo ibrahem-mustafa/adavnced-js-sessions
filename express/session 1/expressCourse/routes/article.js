@@ -1,6 +1,7 @@
 // const router = require('express').Router();
 const express = require('express');
 const router = express.Router();
+const jwt = require('jsonwebtoken');
 
 
 const { Article } = require('../models/article.model')
@@ -54,21 +55,36 @@ router.get('/title/:title', async(req, res) => {
 router.post('/insert', async (req, res) => {
   const {title, content} = req.body;
 
-  const article = Article({
-    title, content
-  })
+  // const user = jwt.verify()
 
-  await article.save();
+  let user;
 
-  // articles.push({
-  //   id: articles.length,
-  //   title, content
-  // })
+  try {
+    user = jwt.verify(req.headers.authorization.split(' ')[1], '53node92')
+    const article = Article({
+      title, content,
+      publisher: {
+        id: user.id,
+        name: user.name
+      }
+    })
 
-  res.json({
-    result: 'Article Inserter Successfully',
-    article
-  })
+    await article.save();
+
+    // articles.push({
+    //   id: articles.length,
+    //   title, content
+    // })
+
+    res.json({
+      result: 'Article Inserter Successfully',
+      article
+    })
+  } catch(err) {
+    res.status(403).json({msg: "Invalid Token"})
+  }
+
+  
 })
 
 

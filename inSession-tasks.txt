@@ -1,0 +1,13 @@
+// 1: create user model
+// 2: create Sign Up Route
+// => check if user exist
+// => if user not exist create new user
+// => hash user password
+// => save user
+// => if user exist return msg about that
+// 3: create sign in Route
+// => check user exist
+// => if user not exist return a msg about that
+// => else, validate user password
+// => if (valid password) return user data
+// => else return msg about that
