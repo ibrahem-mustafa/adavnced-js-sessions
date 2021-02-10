@@ -4,6 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const {Upload} = require('./config/upload')
+const {validateToken} = require('./methods/validation')
+
+
 const {connectToDB} = require('./config/db')
 connectToDB();
 
@@ -13,6 +17,7 @@ const authRouter = require('./routes/auth')
 const articleRouter = require('./routes/article')
 const usersRouter = require('./routes/users')
 const initRouter = require('./routes/init')
+const uploadRouter = require('./routes/upload')
 
 
 var app = express();
@@ -25,7 +30,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 
@@ -41,6 +48,21 @@ app.use('/auth', authRouter)
 app.use('/articles', articleRouter)
 app.use("/users", usersRouter);
 app.use("/init", initRouter);
+app.use("/upload", uploadRouter);
+
+
+
+
+// app.get('/uploads', (req, res) => {
+//     const file = fs.readFileSync(
+//         path.join(
+//             __dirname,
+//             'uploads',
+//             req.params.path
+//         )
+//     )
+//     res.send(file)
+// })
 
 // app.user('/article', articleRouter)
 

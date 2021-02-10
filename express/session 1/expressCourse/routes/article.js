@@ -68,15 +68,17 @@ router.get('/publisher/:id', async (req, res) => {
 
 router.post('/insert', validateToken, isNotAdmin, async (req, res) => {
 
-  const {title, content} = req.body;
+  const {title, content, cover} = req.body;
 
     
   const article = Article({
-    title, content,
+    title,
+    content,
+    cover,
     publisher: {
       id: req.user.id,
       name: req.user.name
-    }
+    },
   })
 
   await article.save();
@@ -87,7 +89,6 @@ router.post('/insert', validateToken, isNotAdmin, async (req, res) => {
   })
   
 })
-
 
 router.put('/:id', async (req, res) => {
 
@@ -108,9 +109,7 @@ router.put('/:id', async (req, res) => {
   const {id} = req.params
   const {title, content} = req.body;
   
-  try {
-    const token = authorization.split(' ')[1]
-    const user = jwt.verify(token, '53node92')
+  
     let statusCode;
     const response = {};
 
@@ -148,11 +147,7 @@ router.put('/:id', async (req, res) => {
     }
     
     res.status(statusCode).json(response)
-  } catch(err) {
-    console.log(err);
-    res.status(403).json({msg: "Invalid Token"})
-  }
-
+  
   
 })
 

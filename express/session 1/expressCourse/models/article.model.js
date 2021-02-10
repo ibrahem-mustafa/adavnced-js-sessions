@@ -14,6 +14,7 @@ const articleSchema = mongoose.Schema({
     id: {type: String, required: true},
     name: {type: String, required: true}
   },
+  cover: String,
   show: {
     type: Boolean,
     default: true
