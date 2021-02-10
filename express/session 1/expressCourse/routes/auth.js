@@ -4,15 +4,11 @@ const router = express.Router();
 const {User} = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const { UserDto } = require('../dto/user/getUser.dto');
 
 
-function UserDto({_id, name, email, phone, category, role}) {
-  return {
-    id: _id,
-    name, email, phone, category, role
-  }
-}
+
 
 router.post('/login', async (req, res) => {
   let statusCode, response = {};
@@ -36,7 +32,7 @@ router.post('/login', async (req, res) => {
     } else {
       // 3: If Data Matched Return User Data
       statusCode = 200;
-      response.user = UserDto(user);
+      response.user = UserDtoDto(user);
       response.token = jwt.sign(response.user, '53node92')
     }
   }

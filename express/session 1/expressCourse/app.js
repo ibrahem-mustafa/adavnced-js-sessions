@@ -11,6 +11,9 @@ connectToDB();
 // var usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth')
 const articleRouter = require('./routes/article')
+const usersRouter = require('./routes/users')
+const initRouter = require('./routes/init')
+
 
 var app = express();
 
@@ -36,6 +39,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/auth', authRouter)
 app.use('/articles', articleRouter)
+app.use("/users", usersRouter);
+app.use("/init", initRouter);
 
 // app.user('/article', articleRouter)
 
