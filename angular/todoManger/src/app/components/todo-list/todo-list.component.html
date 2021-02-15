@@ -1,0 +1,9 @@
+<div>
+  <h2>My Todos</h2>
+  <ul>
+    <li *ngFor="let todo of todos" >
+      <p> <span>Icon</span> {{todo.title}} <button>X</button> </p>
+    </li>
+  </ul>
+  <button (click)="onClick()" > Send Message To Parent</button>
+</div>

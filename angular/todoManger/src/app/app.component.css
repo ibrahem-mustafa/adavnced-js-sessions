@@ -1,0 +1,29 @@
+h2 {
+  color: red
+}
+
+.box {
+  padding: 15px
+}
+
+.warn {
+  background-color: yellow;
+}
+
+.info {
+  background-color: skyblue
+}
+
+.error {
+  background-color: red
+}
+
+
+li {
+  font-size: 23px;
+  color: #333;
+}
+
+li.bb {
+  border-bottom: 1px solid red;
+}

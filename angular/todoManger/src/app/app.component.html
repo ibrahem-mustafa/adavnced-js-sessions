@@ -1,0 +1,93 @@
+<div>
+  <!-- <h2 > {{ greet() }} </h2>
+  <button type="button" (click) = "isDisabled = !isDisabled" >Greet User</button>
+  <br>
+  <br>
+  <input type="text" value="angular course" [disabled]="isDisabled" #input>
+  <br>
+  <br>
+
+  <h3 class="box" [ngClass]="h3Classes()" [ngStyle]=" h3Styles() " [class.disabled]="isDisabled"> Class Binding </h3>
+
+  <br>
+  <br>
+  <input type="text" placeholder="userName" #name [(ngModel)]="username">
+  <input type="text" placeholder="email" #name [(ngModel)]="email">
+  <input type="text" placeholder="password" #name [(ngModel)]="password">
+  <button (click)="signup()">Sign up</button> -->
+<!--
+  <h2>Click Times: {{clicks}} </h2>
+  <button (click)=" inc($event)">Increase</button>
+  <br>
+  <br>
+
+  <h2 *ngIf="show(); else elseState" >Hello From Angular Course</h2>
+
+  <ng-template #elseState>
+    <div> H2 Is Hidden </div>
+  </ng-template>
+
+
+  <div [ngSwitch]="clicks">
+
+    <div *ngSwitchCase="3">Your Reached 3</div>
+    <div *ngSwitchCase="6">Your Reached 6</div>
+    <div *ngSwitchCase="9">Your Reached 9</div>
+    <div *ngSwitchDefault > Still Counting </div>
+
+  </div>
+
+  <h2>My Fav Colors:</h2>
+  <ul >
+    <li *ngFor="let color of colors; index as i; first as f; last as l; odd as o; even as e" [class.bb]="!l" >
+      {{i}} {{color}} - isFirst: {{f}} - isLast: {{l}} - isOdd: {{o}} - IsEven: {{e}}
+    </li>
+  </ul>
+
+  <h1>TODOS COUNT: {{todos.length}}</h1>
+
+
+  <app-todo-list
+    (sendMessage)= "rMessage($event)"
+    [todoList]="todos"
+  ></app-todo-list>
+
+  <h2> Message: {{message}} </h2> -->
+
+
+  <h2>PIPES FOR STRING</h2>
+  <h3>{{'AHMED ANWER  (With lowercase)' | lowercase}}</h3>
+  <h3>{{'ahmed anwer (With uppercase)' | uppercase}}</h3>
+  <h3>{{'ahmed anwer (with titlecase)' | titlecase}}</h3>
+  <h3>{{'ahmed anwer (with slice)' | slice:3:5}}</h3>
+  <h3>
+    {{
+      {
+        name: 'ahmed',
+        age: 23,
+        salary: 50000,
+        by: 'JSON Pipe'
+      } | json
+    }}
+  </h3>
+
+  <h2>PIPES FOR Numbers</h2>
+  <h3> {{ 5.265 | number:'1.1-2' }} </h3>
+  <h3> {{ 5.26515151515 | number:'3.2-5' }} </h3>
+  <h3> {{ 5.265 | number:'4.1-1' }} </h3>
+
+  <h2>PIPES FOR Percentage</h2>
+  <h3> {{ 1.25 | percent }} </h3>
+
+  <h2>PIPES FOR Currency</h2>
+
+  <h3> {{ 125 | currency: "EUR" }} </h3>
+  <h3> {{ 125 | currency: "EUR" : 'code' }} </h3>
+  <h2>PIPES FOR DATES</h2>
+  <h3> {{ date | date:'short'}} </h3>
+  <h3> {{ date | date:'shortDate'}} </h3>
+  <h3> {{ date | date:'shortTime'}} </h3>
+  <h3> {{ date | date:'long'}} </h3>
+  <h3> {{ date | date:'longDate'}} </h3>
+  <h3> {{ date | date:'longTime'}} </h3>
+</div>
