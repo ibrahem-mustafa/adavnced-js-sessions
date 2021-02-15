@@ -47,15 +47,12 @@
   <h1>TODOS COUNT: {{todos.length}}</h1>
 
 
-  <app-todo-list
-    (sendMessage)= "rMessage($event)"
-    [todoList]="todos"
-  ></app-todo-list>
+
 
   <h2> Message: {{message}} </h2> -->
 
 
-  <h2>PIPES FOR STRING</h2>
+  <!-- <h2>PIPES FOR STRING</h2>
   <h3>{{'AHMED ANWER  (With lowercase)' | lowercase}}</h3>
   <h3>{{'ahmed anwer (With uppercase)' | uppercase}}</h3>
   <h3>{{'ahmed anwer (with titlecase)' | titlecase}}</h3>
@@ -89,5 +86,11 @@
   <h3> {{ date | date:'shortTime'}} </h3>
   <h3> {{ date | date:'long'}} </h3>
   <h3> {{ date | date:'longDate'}} </h3>
-  <h3> {{ date | date:'longTime'}} </h3>
+  <h3> {{ date | date:'longTime'}} </h3> -->
+
+  <h2> Todos Count: {{todos.length}} </h2>
+  <app-todo-list
+    (sendMessage)= "rMessage($event)"
+
+  ></app-todo-list>
 </div>

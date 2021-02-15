@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
+import { TodosService } from './services/todos.service';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  todos!: any[]
+  constructor(private todosService: TodosService) { }
+
+  ngOnInit() {
+    this.todos = this.todosService.getTodos()
+  }
   // greetMsg = '';
   // title = 'Hello From Angular';
   // eleId = 'AppRoot';
@@ -84,13 +91,6 @@ export class AppComponent {
   show(): boolean {
     return this.showH2;
   }
-
-  todos = [
-    { id: 1, title: 'Todo 1' },
-    { id: 2, title: 'Todo 2' },
-    { id: 3, title: 'Todo 3' },
-    { id: 3, title: 'Todo 4' },
-  ];
 
   message = '';
 
