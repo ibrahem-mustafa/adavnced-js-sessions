@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { TodosService, Todo } from 'src/app/services/todos.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class TodoListComponent implements OnInit {
 
   @Output() sendMessage = new EventEmitter();
 
-  constructor(_todosService: TodosService) {
+  constructor(_todosService: TodosService, private router: Router) {
     this.todosService = _todosService;
   }
 
@@ -28,7 +29,12 @@ export class TodoListComponent implements OnInit {
   }
 
   addTodo(todo: Todo) {
-    this.todos.push(todo)
+    this.todos.push(todo);
+  }
+
+  navToTodo(todo: Todo) {
+    // /todo/todoId
+    this.router.navigate(['/todos', todo.id])
   }
   //////////////////////////////////////////////////
 

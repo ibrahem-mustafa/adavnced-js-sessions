@@ -12,10 +12,13 @@ import { AboutComponent } from './pages/about/about.component';
 import { TodosComponent } from './pages/todos/todos.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { TodoDescComponent } from './pages/todo-desc/todo-desc.component';
+import { CommentsComponent } from './pages/todo/comments/comments.component';
+import { RelatedComponent } from './pages/todo/related/related.component';
 
 
 @NgModule({
-  declarations: [AppComponent, TodoListComponent, TodoFormComponent, AboutComponent, TodosComponent, HomeComponent, NotFoundComponent, ],
+  declarations: [AppComponent, TodoListComponent, TodoFormComponent, AboutComponent, TodosComponent, HomeComponent, NotFoundComponent, TodoDescComponent, CommentsComponent, RelatedComponent, ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
