@@ -15,7 +15,7 @@
   <input type="text" placeholder="email" #name [(ngModel)]="email">
   <input type="text" placeholder="password" #name [(ngModel)]="password">
   <button (click)="signup()">Sign up</button> -->
-<!--
+  <!--
   <h2>Click Times: {{clicks}} </h2>
   <button (click)=" inc($event)">Increase</button>
   <br>
@@ -50,7 +50,6 @@
 
 
   <h2> Message: {{message}} </h2> -->
-
 
   <!-- <h2>PIPES FOR STRING</h2>
   <h3>{{'AHMED ANWER  (With lowercase)' | lowercase}}</h3>
@@ -88,9 +87,17 @@
   <h3> {{ date | date:'longDate'}} </h3>
   <h3> {{ date | date:'longTime'}} </h3> -->
 
-  <h2> Todos Count: {{todos.length}} </h2>
+  <!-- <h2> Todos Count: {{todos.length}} </h2>
   <app-todo-list
     (sendMessage)= "rMessage($event)"
 
-  ></app-todo-list>
+  ></app-todo-list> -->
+
+  <h1>TODO MANAGER</h1>
+  <nav>
+    <a routerLink="/home" routerLinkActive="active">Home</a> |
+    <a routerLink="/about" routerLinkActive="active">About</a> |
+    <a routerLink="/todos" routerLinkActive="active">Todos</a>
+  </nav>
+  <router-outlet></router-outlet>
 </div>

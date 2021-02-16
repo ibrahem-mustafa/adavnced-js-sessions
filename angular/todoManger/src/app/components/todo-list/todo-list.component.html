@@ -1,4 +1,5 @@
 <div>
+  <app-todo-form (createTodo)="addTodo($event)" ></app-todo-form>
   <h2>My Todos</h2>
   <ul>
     <li *ngFor="let todo of todos" >
@@ -6,4 +7,5 @@
     </li>
   </ul>
   <!-- <button (click)="onClick()" > Send Message To Parent</button> -->
+  <!-- TODO FORM -->
 </div>

@@ -1,18 +1,15 @@
-import { TodosService } from './services/todos.service';
-import { Component, OnInit} from '@angular/core';
+import { Component, } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
-  todos!: any[]
-  constructor(private todosService: TodosService) { }
+export class AppComponent  {
 
-  ngOnInit() {
-    this.todos = this.todosService.getTodos()
-  }
+
+  todos = []
+
   // greetMsg = '';
   // title = 'Hello From Angular';
   // eleId = 'AppRoot';

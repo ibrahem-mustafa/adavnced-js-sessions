@@ -1,4 +1,13 @@
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
+export interface Todo {
+  userId: number;
+  id?: number;
+  title: string;
+  completed: boolean;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -12,9 +21,15 @@ export class TodosService {
     { id: 5, title: 'Todo 5' },
   ];
 
-  constructor() {}
+  todosBaseUrl = 'http://jsonplaceholder.typicode.com';
 
-  getTodos(): any[] {
-    return this.todos.slice(0, 2);
+  constructor(private http: HttpClient) {}
+
+  getTodos(): Observable<Todo[]> {
+    return this.http.get<Todo[]>(this.todosBaseUrl + '/todos?_limit=10');
+  }
+
+  createTodo(todo: Todo) {
+    return this.http.post(this.todosBaseUrl + '/todos', todo);
   }
 }

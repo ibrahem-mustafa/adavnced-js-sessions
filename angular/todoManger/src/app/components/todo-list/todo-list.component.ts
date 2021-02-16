@@ -1,5 +1,6 @@
-import { Component, Input,Output,  OnInit, EventEmitter } from '@angular/core';
-import { TodosService } from 'src/app/services/todos.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { TodosService, Todo } from 'src/app/services/todos.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -18,15 +19,21 @@ export class TodoListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.todos = this.todosService.getTodos();
+    this.todosService.getTodos().subscribe(
+      (todos) => (this.todos = todos),
+      (error: HttpErrorResponse) => {
+        console.error(error);
+      }
+    );
+  }
+
+  addTodo(todo: Todo) {
+    this.todos.push(todo)
   }
   //////////////////////////////////////////////////
 
-
   // todos: any[] = [];
   // constructor(private todosService: TodosService) {}
-
-
 
   //////////////////////////////////////////////////
 
@@ -35,7 +42,6 @@ export class TodoListComponent implements OnInit {
   // @Output() sendMessage = new EventEmitter();
 
   //////////////////////////////////////////////////
-
 
   onClick() {
     this.sendMessage.emit('This Message Is From Todo List Child');

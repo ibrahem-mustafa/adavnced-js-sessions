@@ -30,3 +30,20 @@
 6: Services
 \\\\\\\\\\\\\\\\\\/////////////////
 
+\\\\\\\\\\\\ SESSION 3 ////////////
+7: Interfaces
+8: HTTP & Observable
+9: Fetch Data Via Http Requests // HttpClientModule
+10: Handling Http Errors
+
+11: Routing And Navigation
+12: router-outlet
+13: routerLink
+14: routerLinkActive // apply one or more classes to the active route
+
+15: wildcard (**) , redirect (redirectTo) and pathMatch (prefix || full)
+16: route parameters with Router // router.navigate(['route', parameter]) 
+17: active router // ActivatedRoute (import it from @angular/router)
+18: Nested Children Routes
+\\\\\\\\\\\\\\\\\\/////////////////
+
