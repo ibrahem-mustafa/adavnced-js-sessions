@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { USER_INTERFACE } from 'src/app/interfaces/user.interface';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,7 @@ export class LoginComponent implements OnInit {
   hasError = false;
   errorMsg = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private userService: UserService) {}
 
   ngOnInit(): void {}
 
@@ -29,9 +31,16 @@ export class LoginComponent implements OnInit {
       password: this.password,
     };
     this.authService.login(user).subscribe(
-      (result) => {
+      (result: any) => {
+        const ls = window.localStorage
         this.loading = false;
-        console.log(result)
+        ls.setItem('token', `Bearer ${result.token}`);
+        this.userService.setUser(result.user as USER_INTERFACE)
+
+
+        console.log(this.userService.user())
+        console.log(this.authService.loggedIn())
+
       },
       (error) => {
         this.loading = false;
