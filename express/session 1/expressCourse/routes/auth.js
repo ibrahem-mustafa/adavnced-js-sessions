@@ -32,7 +32,7 @@ router.post('/login', async (req, res) => {
     } else {
       // 3: If Data Matched Return User Data
       statusCode = 200;
-      response.user = UserDtoDto(user);
+      response.user = UserDto(user);
       response.token = jwt.sign(response.user, '53node92')
     }
   }
