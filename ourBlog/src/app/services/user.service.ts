@@ -20,8 +20,7 @@ export class UserService {
   }
 
   user(): USER_INTERFACE {
-    return {...this.userInfo};
+    return { ...this.userInfo };
   }
-
 
 }

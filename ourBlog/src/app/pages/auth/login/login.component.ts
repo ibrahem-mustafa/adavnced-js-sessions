@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { USER_INTERFACE } from 'src/app/interfaces/user.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   hasError = false;
   errorMsg = '';
 
-  constructor(private authService: AuthService, private userService: UserService) {}
+  constructor(private authService: AuthService, private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
         this.loading = false;
         ls.setItem('token', `Bearer ${result.token}`);
         this.userService.setUser(result.user as USER_INTERFACE)
-
+        this.router.navigate(['/db'])
 
         console.log(this.userService.user())
         console.log(this.authService.loggedIn())

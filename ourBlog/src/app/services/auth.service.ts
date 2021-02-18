@@ -12,6 +12,14 @@ export class AuthService {
 
   constructor(private http: HttpClient, private userService: UserService) {}
 
+  me() {
+    return this.http.get(`${this.authUrl}/me`, {
+      headers: {
+        authorization: window.localStorage.getItem('token')!
+      }
+    })
+  }
+
   singup(userData: SIGN_UP_INTERFACE) {
     return this.http.post(this.authUrl + '/signup', userData);
   }

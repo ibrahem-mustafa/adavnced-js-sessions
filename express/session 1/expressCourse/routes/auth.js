@@ -6,8 +6,20 @@ const jwt = require('jsonwebtoken');
 
 const bcrypt = require('bcrypt');
 const { UserDto } = require('../dto/user/getUser.dto');
+const { validateToken } = require('../methods/validation');
 
 
+// get token from headers
+// convert token to a valid object data 
+// get updated user data from database
+router.get('/me', validateToken, async (req, res) => {
+  const userData = await User.findById(req.user.id);
+  const user = UserDto(userData);
+  res.json({
+    user,
+    token: jwt.sign(user, "53node92"),
+  });
+})
 
 
 router.post('/login', async (req, res) => {

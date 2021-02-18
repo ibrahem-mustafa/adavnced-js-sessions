@@ -9,13 +9,19 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
 import { DefaultNavComponent } from './components/nav/default-nav/default-nav.component';
+import { HomeComponent } from './pages/db/home/home.component';
+import { DefaultBarComponent } from './components/bar/default-bar/default-bar.component';
+import { ArticleCardComponent } from './components/articles/article-card/article-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    DefaultNavComponent
+    DefaultNavComponent,
+    HomeComponent,
+    DefaultBarComponent,
+    ArticleCardComponent
   ],
   imports: [
     BrowserModule,

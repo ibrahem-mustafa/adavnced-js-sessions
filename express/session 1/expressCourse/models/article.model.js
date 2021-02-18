@@ -15,10 +15,6 @@ const articleSchema = mongoose.Schema({
     name: {type: String, required: true}
   },
   cover: String,
-  show: {
-    type: Boolean,
-    default: true
-  },
   createdAt: {
     type: Date,
     default: Date.now
