@@ -161,7 +161,7 @@ router.delete('/:id', validateToken, async (req, res) => {
   const article = await Article.findById(id);
 
   if (
-    new ObjectId(article.publisher.id).equals(new ObjectId(user.id)) ||
+    new ObjectId(article.publisher.id).equals(new ObjectId(req.user.id)) ||
     req.user.role === 'admin'
   ) {
     (await article).delete()

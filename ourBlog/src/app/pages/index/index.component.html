@@ -1,15 +1,10 @@
-<div>
-  <app-default-bar (articleCreated)="articles.push($event)"></app-default-bar>
-
-  <div class="row">
+<div class="row my-5">
     <div class="col-md-4" *ngFor="let article of articles">
       <app-article-card
-        [height]="200"
         [id]="article._id"
         [title]="article.title"
         [content]="article.content.slice(0, 60)"
-        (deleteArticle)="deleteArticle($event)"
+        class="m-1"
       ></app-article-card>
     </div>
   </div>
-</div>

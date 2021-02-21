@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { USER_INTERFACE } from '../interfaces/user.interface';
 
@@ -5,9 +6,9 @@ import { USER_INTERFACE } from '../interfaces/user.interface';
   providedIn: 'root',
 })
 export class UserService {
-  private userInfo!: USER_INTERFACE;
+  private userInfo!: USER_INTERFACE | undefined;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
 
   setUser(user: USER_INTERFACE) {
@@ -16,11 +17,31 @@ export class UserService {
     }
 
     const { name, email, phone, category } = user;
-    return this.userInfo = {...this.userInfo, name, email, phone, category}
+    this.userInfo = { ...this.userInfo, name, email, phone, category }
+    window.localStorage.setItem('user', JSON.stringify(this.userInfo))
+    return this.userInfo;
   }
 
   user(): USER_INTERFACE {
-    return { ...this.userInfo };
+
+    if (!this.userInfo) {
+
+      const userData = window.localStorage.getItem('user');
+      const user = JSON.parse(userData!);
+      this.userInfo = user;
+
+
+    }
+
+    return { ...this.userInfo! };
+  }
+
+  userExist() {
+    return !!this.userInfo
+  }
+
+  clear() {
+    this.userInfo = undefined;
   }
 
 }

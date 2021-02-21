@@ -12,6 +12,9 @@ import { DefaultNavComponent } from './components/nav/default-nav/default-nav.co
 import { HomeComponent } from './pages/db/home/home.component';
 import { DefaultBarComponent } from './components/bar/default-bar/default-bar.component';
 import { ArticleCardComponent } from './components/articles/article-card/article-card.component';
+import { IndexComponent } from './pages/index/index.component';
+import { ArticleComponent } from './pages/article/article.component';
+import { ArticleActionsComponent } from './components/articles/article-actions/article-actions.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { ArticleCardComponent } from './components/articles/article-card/article
     DefaultNavComponent,
     HomeComponent,
     DefaultBarComponent,
-    ArticleCardComponent
+    ArticleCardComponent,
+    IndexComponent,
+    ArticleComponent,
+    ArticleActionsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-card',
@@ -11,13 +12,24 @@ export class ArticleCardComponent implements OnInit {
   @Input() content: string = '';
 
   @Input() height: number = 150;
-  constructor() {}
+
+  @Output() deleteArticle = new EventEmitter();
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
+  navigateToArticle() {
+    this.router.navigate(['/articles', this.id])
+  };
+
   getStyle() {
     return {
-      height: `${this.height}px`
-    }
+      'min-height': `${this.height}px`,
+    };
+  }
+
+  deleteArt() {
+    this.deleteArticle.emit(this.id)
   }
 }

@@ -12,11 +12,9 @@ export class HomeComponent implements OnInit {
   articles: ARTICLE_INTERFACE[] = [];
   closeResult = '';
 
-
   constructor(
     private articlesService: ArticlesService,
-    private userService: UserService,
-
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -33,5 +31,7 @@ export class HomeComponent implements OnInit {
       );
   }
 
-
+  deleteArticle(id: string) {
+    this.articles = this.articles.filter(article => article._id !== id)
+  }
 }

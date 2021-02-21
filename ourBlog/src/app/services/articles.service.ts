@@ -15,10 +15,20 @@ export class ArticlesService {
     };
   }
 
+  getAllArticles() {
+    return this.http.get<{
+      articles: ARTICLE_INTERFACE[]
+    }>(`${this.articlesUrl}`)
+  }
+
   getArticlesByPublisher(id: string) {
     return this.http.get<{
       articles: ARTICLE_INTERFACE[];
     }>(`${this.articlesUrl}/publisher/${id}`, { headers: this.getHeaders() });
+  }
+
+  getArticleById(id: string) {
+    return this.http.get(`${this.articlesUrl}/${id}`);
   }
 
   createArticle(title: string, content: string) {
@@ -30,5 +40,9 @@ export class ArticlesService {
       },
       { headers: this.getHeaders() }
     );
+  }
+
+  deleteArticle(id: string) {
+    return this.http.delete(`${this.articlesUrl}/${id}`, {headers: this.getHeaders()})
   }
 }

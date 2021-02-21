@@ -35,12 +35,9 @@ export class LoginComponent implements OnInit {
       (result: any) => {
         const ls = window.localStorage
         this.loading = false;
-        ls.setItem('token', `Bearer ${result.token}`);
         this.userService.setUser(result.user as USER_INTERFACE)
+        ls.setItem('token', `Bearer ${result.token}`);
         this.router.navigate(['/db'])
-
-        console.log(this.userService.user())
-        console.log(this.authService.loggedIn())
 
       },
       (error) => {
