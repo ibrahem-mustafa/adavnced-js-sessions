@@ -14,14 +14,15 @@ export class ArticleCardComponent implements OnInit {
   @Input() height: number = 150;
 
   @Output() deleteArticle = new EventEmitter();
+  @Output() updateArticle = new EventEmitter();
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
   navigateToArticle() {
-    this.router.navigate(['/articles', this.id])
-  };
+    this.router.navigate(['/articles', this.id]);
+  }
 
   getStyle() {
     return {
@@ -30,6 +31,14 @@ export class ArticleCardComponent implements OnInit {
   }
 
   deleteArt() {
-    this.deleteArticle.emit(this.id)
+    this.deleteArticle.emit(this.id);
+  }
+
+  updateArt() {
+    this.updateArticle.emit({
+      id: this.id,
+      title: this.title,
+      content: this.content
+    })
   }
 }

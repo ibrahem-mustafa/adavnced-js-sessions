@@ -17,8 +17,8 @@ export class ArticlesService {
 
   getAllArticles() {
     return this.http.get<{
-      articles: ARTICLE_INTERFACE[]
-    }>(`${this.articlesUrl}`)
+      articles: ARTICLE_INTERFACE[];
+    }>(`${this.articlesUrl}`);
   }
 
   getArticlesByPublisher(id: string) {
@@ -42,7 +42,20 @@ export class ArticlesService {
     );
   }
 
+  updateArticle(id: string, title: string, content: string) {
+    return this.http.put(
+      `${this.articlesUrl}/${id}`,
+      {
+        title,
+        content,
+      },
+      { headers: this.getHeaders() }
+    );
+  }
+
   deleteArticle(id: string) {
-    return this.http.delete(`${this.articlesUrl}/${id}`, {headers: this.getHeaders()})
+    return this.http.delete(`${this.articlesUrl}/${id}`, {
+      headers: this.getHeaders(),
+    });
   }
 }

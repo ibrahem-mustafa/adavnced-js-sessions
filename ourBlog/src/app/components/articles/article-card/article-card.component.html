@@ -6,6 +6,6 @@
         {{content}}
       </p>
 
-      <app-article-actions (deleteArticle)="deleteArt()" [articleId]="id" ></app-article-actions>
+      <app-article-actions (deleteArticle)="deleteArt()" (updateArticle)="updateArt()"  [articleId]="id"  ></app-article-actions>
     </div>
   </div>

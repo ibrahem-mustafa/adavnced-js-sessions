@@ -1,0 +1,24 @@
+/////////////////////// MONY FLOW /////////////////////////////
+
+
+// users system
+=> auth system
+=> profile
+
+// PROFILE
+=> balance
+=> balance categories
+=> transactions
+
+
+// TRANSACTION
+=> amount
+=> reason
+=> payment
+=> date
+
+// TRANSFER
+=> transfer from cat to another
+
+// CATEGORY
+=> balance

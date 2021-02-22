@@ -10,6 +10,8 @@ export class ArticleActionsComponent implements OnInit {
   @Input() articleId!: string;
 
   @Output() deleteArticle = new EventEmitter();
+  @Output() updateArticle = new EventEmitter();
+
   constructor(private articlesService: ArticlesService) {}
 
   ngOnInit(): void {}
@@ -21,5 +23,9 @@ export class ArticleActionsComponent implements OnInit {
       error => console.error(error)
     );
     this.deleteArticle.emit()
+  }
+
+  updateArt() {
+    this.updateArticle.emit()
   }
 }

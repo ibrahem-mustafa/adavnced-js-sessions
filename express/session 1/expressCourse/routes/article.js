@@ -90,7 +90,7 @@ router.post('/insert', validateToken, isNotAdmin, async (req, res) => {
   
 })
 
-router.put('/:id', async (req, res) => {
+router.put('/:id',validateToken,  async (req, res) => {
 
   // ************* Notes ***************
   // if (!ObjectId.isValid(id)) {
@@ -129,7 +129,7 @@ router.put('/:id', async (req, res) => {
       response.msg = 'Article Not Found, New Article Created With Given Data';
 
     } else {
-      if (!new ObjectId(article.publisher.id).equals(new ObjectId(user.id))) {
+      if (!new ObjectId(article.publisher.id).equals(new ObjectId(req.user.id))) {
         response.msg = 'Can Not Access To This Article'
         statusCode = 403
       } else {

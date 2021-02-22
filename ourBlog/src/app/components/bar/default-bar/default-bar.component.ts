@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ArticlesService } from 'src/app/services/articles.service';
 
@@ -9,6 +9,8 @@ import { ArticlesService } from 'src/app/services/articles.service';
   styleUrls: ['./default-bar.component.css'],
 })
 export class DefaultBarComponent implements OnInit {
+
+  @Input() articleModal: any;
 
   @Output() articleCreated = new EventEmitter();
 
@@ -22,16 +24,7 @@ export class DefaultBarComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  createArticle() {
-    this.articlesService.createArticle( this.articleTitle, this.articleContent ).subscribe(
-      (result: any) => {
-        this.articleCreated.emit(result.article);
-        this.articleTitle = '';
-        this.articleContent = '';
-      },
-      error => console.log(error)
-    )
-  }
+
 
   open(content: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
