@@ -22,10 +22,21 @@ const userSchema = Schema({
         type: {
             type: String, required: true, enum: ['income', 'expense', 'transfer']
         },
+        note: {type: String, default: ''},
         amount: {
             type: Number, required: true
         },
-        payment: {
+        paymentId: {
+            type: String, required: true
+        },
+        paymentName: {
+            type: String,
+            required: true
+        },
+        toId: {
+            type: String, required: true
+        },
+        toName: {
             type: String, required: true
         },
         date: {type: Date, default: Date.now}
