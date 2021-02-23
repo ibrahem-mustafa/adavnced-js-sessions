@@ -3,9 +3,23 @@ const { User } = require("../models/user.model");
 const jwt = require('jsonwebtoken')
 const bcrypt = require("bcrypt");
 const UserDto = require('../dto/user.dto')
-const { JWT_PASSWORD } = require("../config/secret"); 
+const { JWT_PASSWORD } = require("../config/secret");
+const {checkSchema} = require('express-validator')
+const {Validate} = require('../middlewares/validation/validateInputs');
 
-router.post("/signin", async (req, res) => {
+router.post("/signin", checkSchema({
+  email: {
+    notEmpty: true,
+    isEmail: true,
+    errorMessage: 'Value Must Be A Valid Email'
+  },
+  password: {
+    notEmpty: true
+  }
+}), Validate, async (req, res) => {
+
+  
+
   const { email, password } = req.body;
   let statusCode,
     response = {};

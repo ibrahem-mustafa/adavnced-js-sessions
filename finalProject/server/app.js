@@ -9,6 +9,7 @@ connectToDB()
 
 const authRoutes = require('./routes/auth.route')
 const swiftRoutes = require('./routes/swift.route')
+const marketRoutes = require('./routes/market.route')
 
 
 const ValidateToken = require("./middlewares/validation/validateToken");
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/auth", authRoutes);
 app.use("/swift", ValidateToken, swiftRoutes);
+app.use("/market", marketRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
