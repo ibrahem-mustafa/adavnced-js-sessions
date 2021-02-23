@@ -6,7 +6,7 @@ import { ARTICLE_INTERFACE } from '../interfaces/article.interface';
   providedIn: 'root',
 })
 export class ArticlesService {
-  articlesUrl = 'http://localhost:5000/articles';
+  articlesUrl = 'https://monyflow.herokuapp.com/articles';
   constructor(private http: HttpClient) {}
 
   getHeaders(): { authorization: string } {

@@ -9,9 +9,13 @@ import { UserService } from './user.service';
   providedIn: 'root',
 })
 export class AuthService {
-  authUrl = 'http://localhost:5000/auth';
+  authUrl = 'https://monyflow.herokuapp.com/auth';
 
-  constructor(private http: HttpClient, private userService: UserService, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   me() {
     return this.http.get(`${this.authUrl}/me`, {
@@ -30,9 +34,9 @@ export class AuthService {
   }
 
   logout() {
-    window.localStorage.removeItem('user')
-    window.localStorage.removeItem('token')
-    this.router.navigate(['/login'])
+    window.localStorage.removeItem('user');
+    window.localStorage.removeItem('token');
+    this.router.navigate(['/login']);
     this.userService.clear();
   }
 
