@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BRANCH_INTERFACE } from 'src/app/interfaces/branch.interface';
+import { BranchesService } from 'src/app/services/branches.service';
 
 @Component({
   selector: 'app-branch-list',
@@ -9,25 +10,21 @@ import { BRANCH_INTERFACE } from 'src/app/interfaces/branch.interface';
 export class BranchListComponent implements OnInit {
 
   branches: BRANCH_INTERFACE[] = [
-    {
-      _id: '1',
-      name: 'Cash',
-      balance: 0
-    },
-    {
-      _id: '2',
-      name: 'Visa',
-      balance: 1000
-    },
-    {
-      _id: '3',
-      name: 'Saving',
-      balance: 0
-    },
+
   ]
-  constructor() { }
+  constructor(private branchesService: BranchesService) { }
 
   ngOnInit(): void {
+    this.branches = this.branchesService.branches()
+    if (this.branches.length === 0) {
+      this.branchesService
+        .fetchBranches()
+        .subscribe(
+          (result:any) => (this.branches = result.user.branches)
+        );
+    }
   }
+
+
 
 }

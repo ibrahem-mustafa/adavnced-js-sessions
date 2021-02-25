@@ -6,6 +6,19 @@ const UserDto = require('../dto/user.dto')
 const { JWT_PASSWORD } = require("../config/secret");
 const {checkSchema} = require('express-validator')
 const {Validate} = require('../middlewares/validation/validateInputs');
+const ValidateToken = require("../middlewares/validation/validateToken");
+
+
+router.get('/me', ValidateToken, async (req, res) => {
+  // const user = UserDto(await User.findById(req.user.id));
+
+  const userData = await User.findById(req.user.id);
+  const user = UserDto(userData);
+  res.json({
+    user, 
+    token: jwt.sign(user, JWT_PASSWORD),
+  }) 
+})
 
 router.post("/signin", checkSchema({
   email: {
