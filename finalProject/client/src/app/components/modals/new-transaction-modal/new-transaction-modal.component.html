@@ -1,0 +1,74 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">New Transaction</h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="modal.dismiss()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="mb-2">
+    <div
+      class="btn-group btn-group-toggle"
+      ngbRadioGroup
+      name="transactionType"
+      [(ngModel)]="type"
+      style="width: 100%"
+    >
+      <label ngbButtonLabel class="btn-outline-primary block">
+        <input ngbButton type="radio" value="income" /> Income
+      </label>
+      <label ngbButtonLabel class="btn-outline-primary block">
+        <input ngbButton type="radio" value="expense" /> Expense
+      </label>
+      <label ngbButtonLabel class="btn-outline-primary block">
+        <input ngbButton type="radio" value="transfer" /> Transfer
+      </label>
+    </div>
+  </div>
+  <div class="mb-2 input-group">
+    <select [(ngModel)]="paymentId" id="payment"  class=" form-control form-select " style="display: block;">
+      <option disabled selected value="none">Payment</option>
+      <option *ngFor="let b of branches" [value]="b._id">{{b.name}} - ${{b.balance}}</option>
+    </select>
+  </div>
+  <div class="mb-2 input-group" *ngIf="type === 'transfer'">
+    <select id="payment"  [(ngModel)]="toId"  class=" form-control form-select " style="display: block;">
+      <option disabled selected value="none">Payment</option>
+      <option *ngFor="let b of toBranches()" [value]="b._id">{{b.name}} - ${{b.balance}}</option>
+    </select>
+  </div>
+
+  <div class="mb-2">
+    <label for="amount" class="form-label">Amount</label>
+    <input class="form-control" id="amount" type="number"  [(ngModel)]="amount" >
+  </div>
+  <div class="mb-2">
+    <label for="note" class="form-label">Note</label>
+    <input class="form-control" id="note" type="text"  [(ngModel)]="note" >
+  </div>
+
+
+
+  <!-- <div>
+    <label for="branchBalance" class="form-label">Initial Balance</label>
+    <input
+      class="form-control"
+      id="branchBalance"
+      type="number"
+      [(ngModel)]="balance"
+    />
+  </div> -->
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-outline-dark"
+    (click)="createTransaction()"
+  >
+    Create
+  </button>
+</div>

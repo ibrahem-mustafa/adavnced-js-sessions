@@ -1,0 +1,23 @@
+<div class="card shadow-sm">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="card-title h4 text-center mr-5 mb-0" [ngClass]="colorState()">
+        {{ transaction.type }}
+      </div>
+      <div>
+        <fa-icon
+          [icon]="dollarIcon"
+          size="lg"
+          [ngClass]="colorState()"
+        ></fa-icon>
+        <span class="text-secondary h5 mx-2 mb-0">
+          {{ transaction.amount }}
+        </span>
+      </div>
+      <span class="text-muted"> {{ transaction.date | date }} </span>
+      <span (click)="deleteTransaction()" style="cursor: pointer;">
+        <fa-icon  class="text-danger" [icon]="deleteIcon" size="lg"></fa-icon>
+      </span>
+    </div>
+  </div>
+</div>

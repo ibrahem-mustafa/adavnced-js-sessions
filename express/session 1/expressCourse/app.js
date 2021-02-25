@@ -23,7 +23,15 @@ const uploadRouter = require('./routes/upload')
 
 const app = express();
 
-app.use(cors())
+const config = {
+  origin(origin, cb) {
+    return cb(null, true);
+  },
+};
+
+app.options("*", cors(config));
+
+app.use(cors(config))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

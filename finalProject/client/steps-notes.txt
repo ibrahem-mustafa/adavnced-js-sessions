@@ -1,0 +1,16 @@
+// home page
+// => header
+// ==> action bar [addBranch, addTransaction]
+// ===> branches list
+// |=> Branch Transactions Page
+// ====> transactions List
+// |=> delete action
+
+
+
+/////////////////////////////
+income | expense | transfer => Radio Input
+payment | from (type === transfer) => dropdown (select input)
+to (type === transfer) => dropdown (select input)
+amount => input (number)
+note => input (text)
